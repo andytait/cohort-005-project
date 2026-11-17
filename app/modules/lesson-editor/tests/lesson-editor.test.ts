@@ -19,7 +19,7 @@ describe("editorThemeFor", () => {
     const theme = editorThemeFor(true);
     expect(theme.name).toBe("cadence-dark");
     expect(theme.data.base).toBe("vs-dark");
-    expect(theme.data.colors["editor.background"]).toBe("#0a0a0a");
+    expect(theme.data.colors["editor.background"]).toBe("#171717");
   });
 
   it("registers both themes, keeping Monaco's own syntax colours", () => {

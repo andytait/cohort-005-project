@@ -5,8 +5,9 @@ export type EditorTheme = {
   data: Monaco.editor.IStandaloneThemeData;
 };
 
-// Colours mirror the app's neutral palette (app/app.css), so the editor reads
-// as part of the card it sits in rather than a black box dropped on the page.
+// Colours mirror the app's neutral palette (app/app.css). The editor background
+// is the --card colour of each theme, so the editor reads as part of the card
+// it sits in rather than a black box dropped on the page.
 const light: EditorTheme = {
   name: "cadence-light",
   data: {
@@ -37,17 +38,17 @@ const dark: EditorTheme = {
     inherit: true,
     rules: [],
     colors: {
-      "editor.background": "#0a0a0a",
+      "editor.background": "#171717",
       "editor.foreground": "#e5e5e5",
       "editorLineNumber.foreground": "#525252",
       "editorLineNumber.activeForeground": "#a3a3a3",
-      "editor.selectionBackground": "#262626",
-      "editor.lineHighlightBackground": "#171717",
+      "editor.selectionBackground": "#404040",
+      "editor.lineHighlightBackground": "#262626",
       "editorCursor.foreground": "#e5e5e5",
-      "editorWidget.background": "#171717",
-      "editorWidget.border": "#262626",
-      "input.background": "#171717",
-      "input.border": "#262626",
+      "editorWidget.background": "#262626",
+      "editorWidget.border": "#404040",
+      "input.background": "#262626",
+      "input.border": "#404040",
       focusBorder: "#525252",
     },
   },

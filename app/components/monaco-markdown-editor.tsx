@@ -123,7 +123,7 @@ export function MonacoMarkdownEditor({
   }
 
   return (
-    <div className="overflow-hidden rounded-md border border-input bg-background">
+    <div className="overflow-hidden rounded-md border border-input bg-card">
       <Editor
         height={height}
         defaultLanguage="markdown"
