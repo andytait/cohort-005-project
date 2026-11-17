@@ -27,8 +27,8 @@ export function daysSince(iso: string): number {
  * Callers should render this with suppressHydrationWarning: the server and the
  * client can land either side of a minute boundary.
  */
-export function formatRelativeTime(iso: string): string {
-  const elapsed = Date.now() - new Date(iso).getTime();
+export function formatRelativeTime(iso: string, now = Date.now()): string {
+  const elapsed = now - new Date(iso).getTime();
 
   if (Number.isNaN(elapsed)) return "";
   if (elapsed < 60_000) return "just now";

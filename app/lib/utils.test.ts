@@ -24,6 +24,11 @@ describe("formatRelativeTime", () => {
   it("returns an empty string for a date it cannot read", () => {
     expect(formatRelativeTime("not a date")).toBe("");
   });
+
+  it("measures from the moment it is given", () => {
+    const now = Date.parse("2027-02-18T15:00:00Z");
+    expect(formatRelativeTime("2027-02-18T12:00:00Z", now)).toBe("3h ago");
+  });
 });
 
 describe("daysSince", () => {
