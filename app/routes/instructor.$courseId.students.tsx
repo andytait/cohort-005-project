@@ -174,7 +174,7 @@ function calculateProgress(
 export function meta({ loaderData }: Route.MetaArgs) {
   const title = loaderData?.course?.title ?? "Student Roster";
   return [
-    { title: `Students: ${title} — Cadence` },
+    { title: `Students: ${title} | Cadence` },
     { name: "description", content: `Enrolled students for ${title}` },
   ];
 }
@@ -286,7 +286,7 @@ function progressBar(progress: number) {
 
 function quizScoreBadge(score: number | null, passed: boolean | null) {
   if (score === null) {
-    return <span className="text-xs text-muted-foreground">—</span>;
+    return <span className="text-xs text-muted-foreground">–</span>;
   }
 
   const percentage = Math.round(score * 100);

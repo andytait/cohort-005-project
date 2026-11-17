@@ -69,7 +69,7 @@ function getCourseWithDetails(id: number) {
 export function meta({ loaderData }: Route.MetaArgs) {
   const title = loaderData?.course?.title ?? "Welcome";
   return [
-    { title: `Welcome to ${title} — Cadence` },
+    { title: `Welcome to ${title} | Cadence` },
     { name: "description", content: `You're enrolled in ${title}!` },
   ];
 }

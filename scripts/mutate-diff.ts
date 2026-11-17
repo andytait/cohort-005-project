@@ -229,8 +229,8 @@ if (targets.length === 0) {
           "mutate yourself:\n\n" +
           "  npm run test:mutation -- app/lib\n"
       : "Nothing to mutate. " +
-          `Mutation testing here covers ${TESTED_ROOTS.join(" and ")} only — ` +
-          "see the comment on TESTED_ROOTS in this file.\n"
+          `Mutation testing here covers ${TESTED_ROOTS.join(" and ")} only. ` +
+          "See the comment on TESTED_ROOTS in this file.\n"
   );
   process.exit(0);
 }

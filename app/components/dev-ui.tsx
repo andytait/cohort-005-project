@@ -178,7 +178,7 @@ export function DevUI({
           </Form>
           {devCountry && (
             <div className="mt-1.5 text-xs text-muted-foreground">
-              Tier {countryTierInfo.tier} — {countryTierInfo.label}
+              Tier {countryTierInfo.tier}: {countryTierInfo.label}
               {countryTierInfo.discount > 0 && (
                 <span className="ml-1 font-medium text-green-600">
                   ({Math.round(countryTierInfo.discount * 100)}% discount)

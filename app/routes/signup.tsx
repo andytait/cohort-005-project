@@ -31,7 +31,7 @@ const signupSchema = z.object({
 
 export function meta() {
   return [
-    { title: "Sign Up — Cadence" },
+    { title: "Sign Up | Cadence" },
     { name: "description", content: "Create your Cadence account" },
   ];
 }

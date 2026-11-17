@@ -95,7 +95,7 @@ function getModuleWithLessons(id: number) {
 export function meta({ loaderData }: Route.MetaArgs) {
   const moduleTitle = loaderData?.module?.title ?? "Module";
   const courseTitle = loaderData?.course?.title ?? "Course";
-  return [{ title: `Preview: ${moduleTitle} — ${courseTitle} — Cadence` }];
+  return [{ title: `Preview: ${moduleTitle} | ${courseTitle} | Cadence` }];
 }
 
 export async function loader({ params, request }: Route.LoaderArgs) {

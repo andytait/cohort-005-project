@@ -75,7 +75,7 @@ type CouponRow = {
 
 export function meta() {
   return [
-    { title: "Team — Cadence" },
+    { title: "Team | Cadence" },
     { name: "description", content: "Manage your team's course seats" },
   ];
 }
@@ -379,7 +379,7 @@ function TeamLicenceRow({ licence }: { licence: TeamLicence }) {
           </div>
           {refundRequest?.status === RefundStatus.Open && (
             <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
-              Refund requested — seats on hold
+              Refund requested: seats on hold
             </span>
           )}
           {refundRequest?.status === RefundStatus.Approved && (

@@ -28,7 +28,7 @@ const loginSchema = z.object({
 
 export function meta() {
   return [
-    { title: "Log In — Cadence" },
+    { title: "Log In | Cadence" },
     { name: "description", content: "Log in to your Cadence account" },
   ];
 }

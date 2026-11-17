@@ -223,7 +223,7 @@ const purchaseActionSchema = z.discriminatedUnion("intent", [
 export function meta({ loaderData }: Route.MetaArgs) {
   const title = loaderData?.course?.title ?? "Purchase";
   return [
-    { title: `Confirm Purchase: ${title} — Cadence` },
+    { title: `Confirm Purchase: ${title} | Cadence` },
     { name: "description", content: `Confirm your enrollment in ${title}` },
   ];
 }
@@ -436,7 +436,7 @@ export default function PurchaseConfirmation({
             {isDiscounted && countryName && (
               <div className="mb-4 rounded-lg bg-green-50 p-3 dark:bg-green-900/20">
                 <p className="text-sm text-green-800 dark:text-green-300">
-                  PPP discount applied for {countryName} — {tierInfo.label}
+                  PPP discount applied for {countryName}: {tierInfo.label}
                 </p>
               </div>
             )}

@@ -132,7 +132,7 @@ function getLessonProgressForCourse(userId: number, courseId: number) {
 export function meta({ loaderData }: Route.MetaArgs) {
   const moduleTitle = loaderData?.module?.title ?? "Module";
   const courseTitle = loaderData?.course?.title ?? "Course";
-  return [{ title: `${moduleTitle} — ${courseTitle} — Cadence` }];
+  return [{ title: `${moduleTitle} | ${courseTitle} | Cadence` }];
 }
 
 export async function loader({ params, request }: Route.LoaderArgs) {

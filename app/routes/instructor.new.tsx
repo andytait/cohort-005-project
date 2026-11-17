@@ -78,7 +78,7 @@ const newCourseSchema = z.object({
 
 export function meta() {
   return [
-    { title: "New Course — Cadence" },
+    { title: "New Course | Cadence" },
     { name: "description", content: "Create a new course" },
   ];
 }
@@ -228,7 +228,7 @@ export default function InstructorNewCourse({
                 <p className="text-sm text-destructive">{errors.salesCopy}</p>
               )}
               <p className="text-xs text-muted-foreground">
-                Markdown. Shown on the public course page — you can refine it
+                Markdown. Shown on the public course page. You can refine it
                 later in the course editor.
               </p>
             </div>

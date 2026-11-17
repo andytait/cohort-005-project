@@ -61,7 +61,7 @@ function getEnrollmentCountForCourse(courseId: number) {
 
 export function meta() {
   return [
-    { title: "My Courses — Cadence" },
+    { title: "My Courses | Cadence" },
     { name: "description", content: "Manage your courses" },
   ];
 }

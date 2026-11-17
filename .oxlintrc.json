@@ -1,7 +1,11 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["typescript", "react", "jsx-a11y", "import", "vitest"],
-  "jsPlugins": ["./lint-rules/sql-raw.js", "./lint-rules/input.js"],
+  "jsPlugins": [
+    "./lint-rules/sql-raw.js",
+    "./lint-rules/input.js",
+    "./lint-rules/copy.js"
+  ],
   "categories": {
     "correctness": "error"
   },
@@ -90,6 +94,14 @@
     "input/no-number-coercion": "error"
   },
   "overrides": [
+    // Copy users read: the app, and the seed data they see through the
+    // database.
+    {
+      "files": ["app/**", "scripts/**"],
+      "rules": {
+        "copy/no-em-dash": "error"
+      }
+    },
     {
       "files": [
         "app/routes/**",
@@ -139,7 +151,6 @@
     {
       "files": [
         "app/lib/comments.server.test.ts",
-        "app/lib/refunds.server.test.ts",
         "app/lib/refunds.server.ts",
         "app/modules/instructor-analytics/lib/instructor-analytics.ts",
         "app/modules/instructor-analytics/tests/instructor-analytics.test.ts",
@@ -150,11 +161,9 @@
         "app/routes/courses.tsx",
         "app/routes/instructor.$courseId.lessons.$lessonId.quiz.tsx",
         "app/routes/instructor.$courseId.tsx",
-        "app/routes/instructor.analytics.tsx",
         "request-logger/agents.test.ts",
         "request-logger/agents.ts",
-        "request-logger/render.ts",
-        "scripts/seed.ts"
+        "request-logger/render.ts"
       ],
       "rules": {
         "max-lines": "off"

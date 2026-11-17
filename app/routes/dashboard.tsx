@@ -194,7 +194,7 @@ function getNextIncompleteLesson(userId: number, courseId: number) {
 
 export function meta() {
   return [
-    { title: "Dashboard — Cadence" },
+    { title: "Dashboard | Cadence" },
     { name: "description", content: "Your enrolled courses and progress" },
   ];
 }
@@ -424,7 +424,7 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
                     <CardContent className="flex-1">
                       <div className="flex items-center gap-2 text-sm text-green-600">
                         <CheckCircle2 className="size-4" />
-                        <span>Completed — {course.totalLessons} lessons</span>
+                        <span>Completed: {course.totalLessons} lessons</span>
                       </div>
                     </CardContent>
                     <CardFooter>

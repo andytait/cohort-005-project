@@ -70,7 +70,7 @@ function updateUserRole(id: number, role: UserRole) {
 
 export function meta() {
   return [
-    { title: "Manage Users — Cadence" },
+    { title: "Manage Users | Cadence" },
     { name: "description", content: "Manage platform users" },
   ];
 }

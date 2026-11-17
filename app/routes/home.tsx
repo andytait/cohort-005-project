@@ -119,7 +119,7 @@ function getLessonCountForCourse(courseId: number) {
 
 export function meta() {
   return [
-    { title: "Cadence — Learn at your own pace" },
+    { title: "Cadence | Learn at your own pace" },
     {
       name: "description",
       content:

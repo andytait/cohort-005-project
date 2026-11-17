@@ -116,7 +116,7 @@ const replySchema = z.object({
 });
 
 export function meta() {
-  return [{ title: "Unanswered Questions — Cadence" }];
+  return [{ title: "Unanswered Questions | Cadence" }];
 }
 
 export async function loader({ request }: Route.LoaderArgs) {

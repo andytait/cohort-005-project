@@ -277,7 +277,7 @@ function getCourseRatingSummaries(
 
 export function meta() {
   return [
-    { title: "Browse Courses — Cadence" },
+    { title: "Browse Courses | Cadence" },
     { name: "description", content: "Browse all available courses" },
   ];
 }

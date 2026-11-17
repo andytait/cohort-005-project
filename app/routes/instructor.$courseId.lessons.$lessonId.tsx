@@ -84,7 +84,7 @@ function updateLesson(
 export function meta({ loaderData }: Route.MetaArgs) {
   const title = loaderData?.lesson?.title ?? "Edit Lesson";
   return [
-    { title: `Edit: ${title} — Cadence` },
+    { title: `Edit: ${title} | Cadence` },
     { name: "description", content: `Edit lesson: ${title}` },
   ];
 }

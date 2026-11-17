@@ -50,7 +50,7 @@ const settingsSchema = z.discriminatedUnion("intent", [
 
 export function meta() {
   return [
-    { title: "Settings — Cadence" },
+    { title: "Settings | Cadence" },
     { name: "description", content: "Edit your profile details" },
   ];
 }

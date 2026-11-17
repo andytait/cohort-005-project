@@ -124,7 +124,7 @@ function deleteCategory(id: number) {
 
 export function meta() {
   return [
-    { title: "Manage Categories — Cadence" },
+    { title: "Manage Categories | Cadence" },
     { name: "description", content: "Manage course categories" },
   ];
 }
@@ -262,8 +262,8 @@ function CreateCategoryRow({ onClose }: { onClose: () => void }) {
           className="h-8 text-sm"
         />
       </td>
-      <td className="px-4 py-3 text-sm text-muted-foreground">—</td>
-      <td className="px-4 py-3 text-sm text-muted-foreground">—</td>
+      <td className="px-4 py-3 text-sm text-muted-foreground">–</td>
+      <td className="px-4 py-3 text-sm text-muted-foreground">–</td>
       <td className="px-4 py-3">
         <div className="flex items-center gap-1">
           <Button

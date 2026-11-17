@@ -48,7 +48,7 @@ const adminRefundActionSchema = z.discriminatedUnion("intent", [
 
 export function meta() {
   return [
-    { title: "Refund Requests — Cadence" },
+    { title: "Refund Requests | Cadence" },
     { name: "description", content: "Approve or decline refund requests" },
   ];
 }

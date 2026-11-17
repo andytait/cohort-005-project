@@ -10,7 +10,7 @@ import { formatRelativeTime } from "~/lib/utils";
 
 export function meta() {
   return [
-    { title: "Saved — Cadence" },
+    { title: "Saved | Cadence" },
     { name: "description", content: "Your bookmarks and notes" },
   ];
 }

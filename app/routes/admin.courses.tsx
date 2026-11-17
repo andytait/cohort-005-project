@@ -78,7 +78,7 @@ function updateCourseStatus(id: number, status: CourseStatus) {
 
 export function meta() {
   return [
-    { title: "Manage Courses — Cadence" },
+    { title: "Manage Courses | Cadence" },
     { name: "description", content: "Manage all platform courses" },
   ];
 }
