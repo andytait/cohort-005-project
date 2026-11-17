@@ -7,6 +7,18 @@ import {
 } from "react";
 import type { EditorProps, OnMount } from "@monaco-editor/react";
 import type * as Monaco from "monaco-editor";
+import {
+  editorThemeFor,
+  editorThemes,
+} from "~/modules/lesson-editor/editor-theme";
+import {
+  editorHeightFor,
+  MIN_EDITOR_HEIGHT,
+} from "~/modules/lesson-editor/editor-height";
+
+function isDarkPage() {
+  return document.documentElement.classList.contains("dark");
+}
 
 type MonacoMarkdownEditorProps = {
   value: string;
@@ -26,6 +38,21 @@ export function MonacoMarkdownEditor({
   onSaveRef.current = onSave;
 
   const [Editor, setEditor] = useState<ComponentType<EditorProps> | null>(null);
+  const monacoRef = useRef<typeof Monaco | null>(null);
+  const [height, setHeight] = useState(MIN_EDITOR_HEIGHT);
+
+  // The sidebar toggles dark mode by flipping a class on <html>; follow it so
+  // the editor never stays dark on a light page or the other way round.
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      monacoRef.current?.editor.setTheme(editorThemeFor(isDarkPage()).name);
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     import("@monaco-editor/react").then((mod) => {
@@ -35,27 +62,17 @@ export function MonacoMarkdownEditor({
 
   const handleMount: OnMount = useCallback((editor, monaco) => {
     editorRef.current = editor;
+    monacoRef.current = monaco;
 
-    monaco.editor.defineTheme("cadence-dark", {
-      base: "vs-dark",
-      inherit: true,
-      rules: [],
-      colors: {
-        "editor.background": "#0a0a0a",
-        "editor.foreground": "#e5e5e5",
-        "editorLineNumber.foreground": "#525252",
-        "editorLineNumber.activeForeground": "#a3a3a3",
-        "editor.selectionBackground": "#262626",
-        "editor.lineHighlightBackground": "#171717",
-        "editorCursor.foreground": "#e5e5e5",
-        "editorWidget.background": "#171717",
-        "editorWidget.border": "#262626",
-        "input.background": "#171717",
-        "input.border": "#262626",
-        focusBorder: "#525252",
-      },
+    for (const theme of editorThemes) {
+      monaco.editor.defineTheme(theme.name, theme.data);
+    }
+    monaco.editor.setTheme(editorThemeFor(isDarkPage()).name);
+
+    setHeight(editorHeightFor(editor.getContentHeight()));
+    editor.onDidContentSizeChange(({ contentHeight }) => {
+      setHeight(editorHeightFor(contentHeight));
     });
-    monaco.editor.setTheme("cadence-dark");
 
     // Register Prettier as Monaco's native document formatter for Markdown
     monaco.languages.registerDocumentFormattingEditProvider("markdown", {
@@ -100,15 +117,15 @@ export function MonacoMarkdownEditor({
     return (
       <div
         className="overflow-hidden rounded-md border border-input"
-        style={{ height: "500px" }}
+        style={{ height: MIN_EDITOR_HEIGHT }}
       />
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-md border border-input">
+    <div className="overflow-hidden rounded-md border border-input bg-card">
       <Editor
-        height="500px"
+        height={height}
         defaultLanguage="markdown"
         defaultValue={value}
         onChange={(v) => onChange(v ?? "")}
@@ -117,6 +134,7 @@ export function MonacoMarkdownEditor({
           minimap: { enabled: false },
           wordWrap: "on",
           lineNumbers: "on",
+          lineNumbersMinChars: 3,
           scrollBeyondLastLine: false,
           fontSize: 14,
           fontFamily: "ui-monospace, monospace",
