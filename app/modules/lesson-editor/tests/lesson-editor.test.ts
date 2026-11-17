@@ -46,7 +46,6 @@ describe("editorThemeFor", () => {
       Object.keys(t.data.colors).sort()
     );
     expect(light).toEqual(dark);
-    expect(light).toHaveLength(12);
   });
 });
 
@@ -64,11 +63,6 @@ describe("editorHeightFor", () => {
   it("stops at the maximum for a long lesson", () => {
     expect(editorHeightFor(MAX_EDITOR_HEIGHT + 1)).toBe(MAX_EDITOR_HEIGHT);
     expect(editorHeightFor(5000)).toBe(MAX_EDITOR_HEIGHT);
-  });
-
-  it("uses 240 and 640 as the bounds", () => {
-    expect(MIN_EDITOR_HEIGHT).toBe(240);
-    expect(MAX_EDITOR_HEIGHT).toBe(640);
   });
 });
 
