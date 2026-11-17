@@ -21,6 +21,7 @@ import {
 import { data, isRouteErrorResponse } from "react-router";
 import { z } from "zod";
 import { parseFormData } from "~/lib/validation";
+import { saveBarState } from "~/modules/lesson-editor/save-bar";
 
 const updateLessonSchema = z.object({
   intent: z.literal("update-lesson"),
@@ -173,6 +174,11 @@ export default function InstructorLessonEditor({
     videoUrl !== (lesson.videoUrl ?? "") ||
     durationMinutes !== (lesson.durationMinutes?.toString() ?? "") ||
     githubRepoUrl !== (lesson.githubRepoUrl ?? "");
+
+  const saveBar = saveBarState({
+    hasChanges,
+    saving: fetcher.state !== "idle",
+  });
 
   const blocker = useBlocker(hasChanges);
 
@@ -374,20 +380,14 @@ export default function InstructorLessonEditor({
           </CardContent>
         </Card>
 
-        {/* Save Button */}
-        <div className="flex items-center gap-4">
-          <Button
-            onClick={handleSave}
-            disabled={!hasChanges || fetcher.state !== "idle"}
-          >
+        <div className="sticky bottom-0 -mx-6 flex items-center justify-between gap-4 border-t bg-background/95 px-6 py-4 backdrop-blur supports-[backdrop-filter]:bg-background/80 lg:-mx-8 lg:px-8">
+          <output className="text-sm text-muted-foreground" aria-live="polite">
+            {saveBar.status}
+          </output>
+          <Button onClick={handleSave} disabled={saveBar.disabled}>
             <Save className="mr-1.5 size-4" />
-            {fetcher.state !== "idle" ? "Saving..." : "Save Changes"}
+            {saveBar.label}
           </Button>
-          {hasChanges && (
-            <span className="text-sm text-muted-foreground">
-              You have unsaved changes.
-            </span>
-          )}
         </div>
       </div>
     </div>
